@@ -4,6 +4,7 @@ import cors from "cors";
 
 import { TicketModule } from "./tickets/ticket.module"; 
 import { UserModule } from "./users/user.module";
+import { TeamModule } from "./teams/team.module";
 
 
 const app = express();
@@ -25,5 +26,9 @@ app.use(
   TicketModule.router
 );
 
+app.use(
+  "/api/team",
+  TeamModule.router
+);
 
 export default app;
