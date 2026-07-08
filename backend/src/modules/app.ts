@@ -18,7 +18,7 @@ app.get("/health", (_, res) => {
 
 app.use(
   "/api/users",
-  UserModule.
+  UserModule.router
 );
 
 app.use(

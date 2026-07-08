@@ -1,4 +1,5 @@
 import { Server } from "socket.io";
+import http from "http";
 
 export class WebsocketGateway {
 
@@ -35,3 +36,9 @@ export class WebsocketGateway {
 
 export const websocketGateway =
   new WebsocketGateway();
+
+export function initSocket(server: http.Server) {
+  const io = new Server(server);
+  websocketGateway.initialize(io);
+  return io;
+}
