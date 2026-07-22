@@ -1,6 +1,6 @@
 import { TicketRepository } from "../../../domain/repositories/ticket.repository";
 import { Ticket } from "../../../domain/entities/ticket.entity";
-import { TicketModel } from "../models/ticket.model";
+import { TicketModel } from "../model/ticket.model";
 import { TicketPersistenceMapper } from "../mappers/ticket-persistence.mapper";
 
 export class MongoTicketRepository

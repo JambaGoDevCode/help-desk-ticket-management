@@ -1,6 +1,6 @@
 import { TicketMessageRepository } from "../../../domain/repositories/ticket-message.repository";
 import { TicketMessage } from "../../../domain/entities/ticket-message.entity";
-import { TicketMessageModel } from "../models/ticket-message.model";
+import { TicketMessageModel } from "../model/ticket-message.model";
 
 export class MongoTicketMessageRepository
   implements TicketMessageRepository {

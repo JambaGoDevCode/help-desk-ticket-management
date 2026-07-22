@@ -1,5 +1,5 @@
 import { TicketActivityRepository } from "../../../domain/repositories/ticket-activity.repository";
-import { TicketActivityModel } from "../models/ticket-activity.model";
+import { TicketActivityModel } from "../model/ticket-activity.model";
 
 export class MongoTicketActivityRepository
   implements TicketActivityRepository {
