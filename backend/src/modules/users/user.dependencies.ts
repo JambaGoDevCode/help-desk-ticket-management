@@ -1,10 +1,10 @@
-import { MongoUserRepository } from "./infrastructure/persistence/repositories/user.repository.impl";
-import { MongoUserSessionRepository } from "./infrastructure/persistence/repositories/user-session.repository.impl";
-import { MongoUserReadRepository } from "./infrastructure/persistence/repositories/user.read.repository.impl";
+import { UserRepositoryImpl } from "./infrastructure/persistence/repositories/user.mongo.repository";
+import { UserSessionMongoRepository } from "./infrastructure/persistence/repositories/user-session.mongo.repository";
+import { UserReadRepositoryMongo } from "./infrastructure/persistence/repositories/user.read.repository.mongo"; 
 
 import { PasswordPolicyService } from "./domain/services/password-policy.service";
 import { UserPolicyService } from "./domain/services/user-policy.service";
-import { UserAuthPolicyService } from "./domain/services/user-auth-policy.service";
+import { UserAuthPolicyService } from "./domain/services/authentication-policy.service";
 import { UserSessionService } from "./domain/services/user-session.service";
 
 import { UserPublisher } from "./infrastructure/messaging/publishers/user.publisher";
@@ -14,11 +14,11 @@ export const userDependencies = {
 
     repositories: {
 
-        userRepository: new MongoUserRepository(),
+        userRepository: new UserRepositoryImpl(),
 
-        sessionRepository: new MongoUserSessionRepository(),
+        sessionRepository: new UserSessionMongoRepository(),
 
-        readRepository: new MongoUserReadRepository(),
+        readRepository: new UserReadRepositoryMongo(),
 
     },
 
@@ -42,7 +42,7 @@ export const userDependencies = {
 
     realtime: {
 
-        gateway: new UserGateway(),
+        gateway: new UserGateway(new UserSessionService()),
 
     },
 

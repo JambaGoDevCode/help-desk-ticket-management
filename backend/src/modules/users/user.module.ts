@@ -1,7 +1,6 @@
 import { Router } from "express";
 
 import { initializeUserEvents } from "./user.events";
-
 import { userUseCases } from "./user.container";
 
 import { UserController } from "./presentation/controllers/user.controller";
@@ -15,6 +14,12 @@ import { ProfileController } from "./presentation/controllers/profile.controller
 */
 
 initializeUserEvents();
+
+/*
+|--------------------------------------------------------------------------
+| Router
+|--------------------------------------------------------------------------
+*/
 
 const router = Router();
 
@@ -42,13 +47,9 @@ const profileController = new ProfileController(
 
 /*
 |--------------------------------------------------------------------------
-| Routes
+| User Routes
 |--------------------------------------------------------------------------
 */
-
-/**
- * Users
- */
 
 router.get(
     "/",
@@ -70,18 +71,22 @@ router.patch(
     userController.deactivate.bind(userController)
 );
 
-/**
- * Profile
- */
+/*
+|--------------------------------------------------------------------------
+| Profile Routes
+|--------------------------------------------------------------------------
+*/
 
 router.get(
     "/me",
     profileController.get.bind(profileController)
 );
 
-/**
- * Authentication
- */
+/*
+|--------------------------------------------------------------------------
+| Authentication Routes
+|--------------------------------------------------------------------------
+*/
 
 router.post(
     "/login",
@@ -92,6 +97,12 @@ router.patch(
     "/change-password",
     authController.changePassword.bind(authController)
 );
+
+/*
+|--------------------------------------------------------------------------
+| Module
+|--------------------------------------------------------------------------
+*/
 
 export const UserModule = {
     router,
